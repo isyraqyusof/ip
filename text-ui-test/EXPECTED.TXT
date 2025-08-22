@@ -52,5 +52,14 @@ Here are your tasks:
 3. [E][ ] project meeting  (from:  Mon 2pm  to:  4pm)
 ___________________________________
 ___________________________________
+Oh no! Please provide a description for your todo task.
+___________________________________
+___________________________________
+Oh no! Please provide deadline in the format: {Description} /by {Day}
+___________________________________
+___________________________________
+Oh no! Please provide event in the format: {Description} /from {date/time} /to {date/time}
+___________________________________
+___________________________________
 Bye. Hope to see you again soon!
 ___________________________________
