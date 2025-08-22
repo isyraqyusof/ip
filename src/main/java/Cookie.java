@@ -2,6 +2,8 @@ import java.util.Scanner;
 public class Cookie {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String[] storage = new String[100];
+        int counter = 0;
 
         String line = "___________________________________";
         System.out.println(line);
@@ -17,10 +19,21 @@ public class Cookie {
                 System.out.println(line);
                 break;
             }
+            else if (input.equals("list")) {
+                int currentCount = 1;
+                System.out.println(line);
+                for (int i = 0; i < counter; i++) {
+                    System.out.println(currentCount + ". " + storage[i]);
+                    currentCount++;
+                }
+                System.out.println(line);
+            }
             else {
                 System.out.println(line);
-                System.out.println(input);
+                System.out.println("added: " + input);
                 System.out.println(line);
+                storage[counter] = input;
+                counter++;
             }
         }
     }
