@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class Cookie {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Task[] listOfTasks = new Task[100];
+        ArrayList<Task> listOfTasks = new ArrayList<>();
         int counter = 0;
 
         String line = "___________________________________";
@@ -27,7 +28,7 @@ public class Cookie {
                     System.out.println(line);
                     System.out.println("Here are your tasks:");
                     for (int i = 0; i < counter; i++) {
-                        System.out.println(currentCount + ". " + listOfTasks[i]);
+                        System.out.println(currentCount + ". " + listOfTasks.get(i));
                         currentCount++;
                     }
                     System.out.println(line);
@@ -36,27 +37,40 @@ public class Cookie {
                         throw new CookieException("Please specify which task you would like to mark.");
                     }
                     int indexToBeMarked = Integer.parseInt(splitInput[1]) - 1;
-                    listOfTasks[indexToBeMarked].markAsDone();
+                    listOfTasks.get(indexToBeMarked).markAsDone();
                     System.out.println(line);
                     System.out.println("Great! I've marked this task as done:");
-                    System.out.println(listOfTasks[indexToBeMarked]);
+                    System.out.println(listOfTasks.get(indexToBeMarked));
                     System.out.println(line);
                 } else if (firstWord.equals("unmark")) {
                     if (fullInput.equals("unmark")) {
                         throw new CookieException("Please specify which task you would like to unmark.");
                     }
                     int indexToBeUnmarked = Integer.parseInt(splitInput[1]) - 1;
-                    listOfTasks[indexToBeUnmarked].markAsUndone();
+                    listOfTasks.get(indexToBeUnmarked).markAsUndone();
                     System.out.println(line);
                     System.out.println("Alright. I've marked this task as not done yet:");
-                    System.out.println(listOfTasks[indexToBeUnmarked]);
+                    System.out.println(listOfTasks.get(indexToBeUnmarked));
+                    System.out.println(line);
+                } else if (firstWord.equals("delete")) {
+                    if (fullInput.equals("delete")) {
+                        throw new CookieException("Please specify which task you would like to delete.");
+                    }
+                    int indexToBeDeleted = Integer.parseInt(splitInput[1]) - 1;
+                    Task taskToBeDeleted = listOfTasks.get(indexToBeDeleted);
+                    listOfTasks.remove(indexToBeDeleted);
+                    counter--;
+                    System.out.println(line);
+                    System.out.println("Alright. I've deleted this task:");
+                    System.out.println(taskToBeDeleted);
+                    System.out.println("Now you have " + counter + " tasks in the list.");
                     System.out.println(line);
                 } else if (firstWord.equals("todo")) {
                     if (fullInput.equals("todo")) {
                         throw new CookieException("Please provide a description for your todo task.");
                     }
                     Task newTodo = new Todo(splitInput[1]);
-                    listOfTasks[counter] = newTodo;
+                    listOfTasks.add(newTodo);
                     counter++;
                     System.out.println(line);
                     System.out.println("A todo, got it! I've added this task:");
@@ -71,7 +85,7 @@ public class Cookie {
                     String description = secondPhraseSplit[0];
                     String deadline = secondPhraseSplit[1];
                     Task newDeadline = new Deadline(description, deadline);
-                    listOfTasks[counter] = newDeadline;
+                    listOfTasks.add(newDeadline);
                     counter++;
                     System.out.println(line);
                     System.out.println("A deadline, got it! I've added this task:");
@@ -88,7 +102,7 @@ public class Cookie {
                     String from = thirdPhraseSplit[0];
                     String to = thirdPhraseSplit[1];
                     Task newEvent = new Event(description, from, to);
-                    listOfTasks[counter] = newEvent;
+                    listOfTasks.add(newEvent);
                     counter++;
                     System.out.println(line);
                     System.out.println("An event, got it! I've added this task:");

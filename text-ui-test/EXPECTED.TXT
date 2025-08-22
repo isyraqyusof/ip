@@ -61,5 +61,15 @@ ___________________________________
 Oh no! Please provide event in the format: {Description} /from {date/time} /to {date/time}
 ___________________________________
 ___________________________________
+Alright. I've deleted this task:
+[T][ ] borrow book
+Now you have 2 tasks in the list.
+___________________________________
+___________________________________
+Here are your tasks:
+1. [D][X] return book (by: Sunday)
+2. [E][ ] project meeting  (from:  Mon 2pm  to:  4pm)
+___________________________________
+___________________________________
 Bye. Hope to see you again soon!
 ___________________________________
