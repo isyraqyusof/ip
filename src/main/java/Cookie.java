@@ -3,8 +3,11 @@ import java.util.Scanner;
 public class Cookie {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Task> listOfTasks = new ArrayList<>();
-        int counter = 0;
+        ArrayList<Task> listOfTasks;
+        int taskCounter = 0;
+        Storage storage = new Storage("data/cookie.txt");
+        listOfTasks = storage.load();
+        taskCounter = listOfTasks.size();
 
         String line = "___________________________________";
         System.out.println(line);
@@ -27,7 +30,7 @@ public class Cookie {
                     int currentCount = 1;
                     System.out.println(line);
                     System.out.println("Here are your tasks:");
-                    for (int i = 0; i < counter; i++) {
+                    for (int i = 0; i < taskCounter; i++) {
                         System.out.println(currentCount + ". " + listOfTasks.get(i));
                         currentCount++;
                     }
@@ -42,6 +45,7 @@ public class Cookie {
                     System.out.println("Great! I've marked this task as done:");
                     System.out.println(listOfTasks.get(indexToBeMarked));
                     System.out.println(line);
+                    storage.save(listOfTasks);
                 } else if (firstWord.equals("unmark")) {
                     if (fullInput.equals("unmark")) {
                         throw new CookieException("Please specify which task you would like to unmark.");
@@ -52,6 +56,7 @@ public class Cookie {
                     System.out.println("Alright. I've marked this task as not done yet:");
                     System.out.println(listOfTasks.get(indexToBeUnmarked));
                     System.out.println(line);
+                    storage.save(listOfTasks);
                 } else if (firstWord.equals("delete")) {
                     if (fullInput.equals("delete")) {
                         throw new CookieException("Please specify which task you would like to delete.");
@@ -59,24 +64,26 @@ public class Cookie {
                     int indexToBeDeleted = Integer.parseInt(splitInput[1]) - 1;
                     Task taskToBeDeleted = listOfTasks.get(indexToBeDeleted);
                     listOfTasks.remove(indexToBeDeleted);
-                    counter--;
+                    taskCounter--;
                     System.out.println(line);
                     System.out.println("Alright. I've deleted this task:");
                     System.out.println(taskToBeDeleted);
-                    System.out.println("Now you have " + counter + " tasks in the list.");
+                    System.out.println("Now you have " + taskCounter + " tasks in the list.");
                     System.out.println(line);
+                    storage.save(listOfTasks);
                 } else if (firstWord.equals("todo")) {
                     if (fullInput.equals("todo")) {
                         throw new CookieException("Please provide a description for your todo task.");
                     }
                     Task newTodo = new Todo(splitInput[1]);
                     listOfTasks.add(newTodo);
-                    counter++;
+                    taskCounter++;
                     System.out.println(line);
                     System.out.println("A todo, got it! I've added this task:");
                     System.out.println(newTodo);
-                    System.out.println("Now you have " + counter + " tasks in the list.");
+                    System.out.println("Now you have " + taskCounter + " tasks in the list.");
                     System.out.println(line);
+                    storage.save(listOfTasks);
                 } else if (firstWord.equals("deadline")) {
                     if (fullInput.equals("deadline") || !splitInput[1].contains("/by")) {
                         throw new CookieException("Please provide deadline in the format: {Description} /by {Day}");
@@ -86,12 +93,13 @@ public class Cookie {
                     String deadline = secondPhraseSplit[1];
                     Task newDeadline = new Deadline(description, deadline);
                     listOfTasks.add(newDeadline);
-                    counter++;
+                    taskCounter++;
                     System.out.println(line);
                     System.out.println("A deadline, got it! I've added this task:");
                     System.out.println(newDeadline);
-                    System.out.println("Now you have " + counter + " tasks in the list.");
+                    System.out.println("Now you have " + taskCounter + " tasks in the list.");
                     System.out.println(line);
+                    storage.save(listOfTasks);
                 } else if (firstWord.equals("event")) {
                     if (fullInput.equals("event") || !splitInput[1].contains("/from") || !splitInput[1].contains("/to")) {
                         throw new CookieException("Please provide event in the format: {Description} /from {date/time} /to {date/time}");
@@ -103,12 +111,13 @@ public class Cookie {
                     String to = thirdPhraseSplit[1];
                     Task newEvent = new Event(description, from, to);
                     listOfTasks.add(newEvent);
-                    counter++;
+                    taskCounter++;
                     System.out.println(line);
                     System.out.println("An event, got it! I've added this task:");
                     System.out.println(newEvent);
-                    System.out.println("Now you have " + counter + " tasks in the list.");
+                    System.out.println("Now you have " + taskCounter + " tasks in the list.");
                     System.out.println(line);
+                    storage.save(listOfTasks);
                 } else {
                     throw new CookieException("Sorry! I'm not too sure what you mean!");
                 }

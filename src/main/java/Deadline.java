@@ -7,6 +7,11 @@ public class Deadline extends Task {
         this.by = by;
     }
 
+    public String toStoredFormat() {
+        int status = isDone ? 1 : 0;
+        return "D | " + status + " | " + description + " | " + by;
+    }
+
     @Override
     public String toString() {
         return "[D]" + super.toString() + "(by:" + by + ")";
