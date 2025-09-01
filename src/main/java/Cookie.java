@@ -6,8 +6,14 @@ public class Cookie {
         ArrayList<Task> listOfTasks;
         int taskCounter = 0;
         Storage storage = new Storage("data/cookie.txt");
-        listOfTasks = storage.load();
-        taskCounter = listOfTasks.size();
+
+        try {
+            listOfTasks = storage.load();
+            taskCounter = listOfTasks.size();
+        } catch (CookieException e) {
+            System.out.println("Error in loading tasks." + e.getMessage());
+            listOfTasks = new ArrayList<>();
+        }
 
         String line = "___________________________________";
         System.out.println(line);
@@ -16,7 +22,7 @@ public class Cookie {
         System.out.println(line);
 
         while (true) {
-            String fullInput = scanner.nextLine();
+            String fullInput = scanner.nextLine().strip();
             String[] splitInput = fullInput.split(" ", 2);
             String firstWord = splitInput[0];
 

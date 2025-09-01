@@ -4,6 +4,7 @@ public class Todo extends Task {
         super(description);
     }
 
+    @Override
     public String toStoredFormat() {
         int status = isDone ? 1 : 0;
         return "T | " + status + " | " + description;

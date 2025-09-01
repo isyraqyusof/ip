@@ -3,7 +3,7 @@ public abstract class Task {
     protected boolean isDone;
 
     public Task(String description) {
-        this.description = description;
+        this.description = description.strip();
         this.isDone = false;
     }
 
@@ -21,7 +21,7 @@ public abstract class Task {
 
     public abstract String toStoredFormat();
 
-    public static Task toOriginalFormat(String storedFormat) {
+    public static Task toOriginalFormat(String storedFormat) throws CookieException {
         String[] splitStoredFormat = storedFormat.split("\\|");
         String typeOfTask = splitStoredFormat[0].strip();
         boolean isDone = splitStoredFormat[1].strip().equals("1");
@@ -57,6 +57,7 @@ public abstract class Task {
         }
     }
 
+    @Override
     public String toString() {
         return ("[" + getStatusIcon() + "] " + this.description);
     }
