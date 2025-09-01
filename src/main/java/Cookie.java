@@ -1,25 +1,27 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Cookie {
+
+    private Storage storage;
+    private Ui ui;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Task> listOfTasks;
         int taskCounter = 0;
         Storage storage = new Storage("data/cookie.txt");
 
+        Ui ui = new Ui();
+
         try {
             listOfTasks = storage.load();
             taskCounter = listOfTasks.size();
         } catch (CookieException e) {
-            System.out.println("Error in loading tasks." + e.getMessage());
+            ui.showLoadingError(e.getMessage());
             listOfTasks = new ArrayList<>();
         }
 
-        String line = "___________________________________";
-        System.out.println(line);
-        System.out.println("Hey there! My name is Cookie");
-        System.out.println("How can I help you?");
-        System.out.println(line);
+        ui.showWelcome();
 
         while (true) {
             String fullInput = scanner.nextLine().strip();
@@ -28,29 +30,17 @@ public class Cookie {
 
             try {
                 if (fullInput.equals("bye")) {
-                    System.out.println(line);
-                    System.out.println("Bye. Hope to see you again soon!");
-                    System.out.println(line);
+                    ui.showBye();
                     break;
                 } else if (fullInput.equals("list")) {
-                    int currentCount = 1;
-                    System.out.println(line);
-                    System.out.println("Here are your tasks:");
-                    for (int i = 0; i < taskCounter; i++) {
-                        System.out.println(currentCount + ". " + listOfTasks.get(i));
-                        currentCount++;
-                    }
-                    System.out.println(line);
+                    ui.showList(listOfTasks);
                 } else if (firstWord.equals("mark")) {
                     if (fullInput.equals("mark")) {
                         throw new CookieException("Please specify which task you would like to mark.");
                     }
                     int indexToBeMarked = Integer.parseInt(splitInput[1]) - 1;
                     listOfTasks.get(indexToBeMarked).markAsDone();
-                    System.out.println(line);
-                    System.out.println("Great! I've marked this task as done:");
-                    System.out.println(listOfTasks.get(indexToBeMarked));
-                    System.out.println(line);
+                    ui.showMark(listOfTasks.get(indexToBeMarked));
                     storage.save(listOfTasks);
                 } else if (firstWord.equals("unmark")) {
                     if (fullInput.equals("unmark")) {
@@ -58,10 +48,7 @@ public class Cookie {
                     }
                     int indexToBeUnmarked = Integer.parseInt(splitInput[1]) - 1;
                     listOfTasks.get(indexToBeUnmarked).markAsUndone();
-                    System.out.println(line);
-                    System.out.println("Alright. I've marked this task as not done yet:");
-                    System.out.println(listOfTasks.get(indexToBeUnmarked));
-                    System.out.println(line);
+                    ui.showUnmark(listOfTasks.get(indexToBeUnmarked));
                     storage.save(listOfTasks);
                 } else if (firstWord.equals("delete")) {
                     if (fullInput.equals("delete")) {
@@ -71,11 +58,7 @@ public class Cookie {
                     Task taskToBeDeleted = listOfTasks.get(indexToBeDeleted);
                     listOfTasks.remove(indexToBeDeleted);
                     taskCounter--;
-                    System.out.println(line);
-                    System.out.println("Alright. I've deleted this task:");
-                    System.out.println(taskToBeDeleted);
-                    System.out.println("Now you have " + taskCounter + " tasks in the list.");
-                    System.out.println(line);
+                    ui.showDelete(taskToBeDeleted, taskCounter);
                     storage.save(listOfTasks);
                 } else if (firstWord.equals("todo")) {
                     if (fullInput.equals("todo")) {
@@ -84,11 +67,7 @@ public class Cookie {
                     Task newTodo = new Todo(splitInput[1]);
                     listOfTasks.add(newTodo);
                     taskCounter++;
-                    System.out.println(line);
-                    System.out.println("A todo, got it! I've added this task:");
-                    System.out.println(newTodo);
-                    System.out.println("Now you have " + taskCounter + " tasks in the list.");
-                    System.out.println(line);
+                    ui.showTodo(newTodo, taskCounter);
                     storage.save(listOfTasks);
                 } else if (firstWord.equals("deadline")) {
                     if (fullInput.equals("deadline") || !splitInput[1].contains("/by")) {
@@ -100,11 +79,7 @@ public class Cookie {
                     Task newDeadline = new Deadline(description, deadline);
                     listOfTasks.add(newDeadline);
                     taskCounter++;
-                    System.out.println(line);
-                    System.out.println("A deadline, got it! I've added this task:");
-                    System.out.println(newDeadline);
-                    System.out.println("Now you have " + taskCounter + " tasks in the list.");
-                    System.out.println(line);
+                    ui.showDeadline(newDeadline, taskCounter);
                     storage.save(listOfTasks);
                 } else if (firstWord.equals("event")) {
                     if (fullInput.equals("event") || !splitInput[1].contains("/from") || !splitInput[1].contains("/to")) {
@@ -118,19 +93,13 @@ public class Cookie {
                     Task newEvent = new Event(description, from, to);
                     listOfTasks.add(newEvent);
                     taskCounter++;
-                    System.out.println(line);
-                    System.out.println("An event, got it! I've added this task:");
-                    System.out.println(newEvent);
-                    System.out.println("Now you have " + taskCounter + " tasks in the list.");
-                    System.out.println(line);
+                    ui.showEvent(newEvent, taskCounter);
                     storage.save(listOfTasks);
                 } else {
                     throw new CookieException("Sorry! I'm not too sure what you mean!");
                 }
             } catch (CookieException e) {
-                System.out.println(line);
-                System.out.println("Oh no! " + e.getMessage());
-                System.out.println(line);
+                ui.showError(e.getMessage());
             }
         }
     }
