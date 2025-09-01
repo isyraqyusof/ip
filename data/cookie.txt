@@ -2,3 +2,5 @@ T | 0 | break
 D | 0 | sleep | tonight
 T | 0 | help
 T | 0 | break
+D | 0 | return book  |  2/12/2019 1800
+E | 0 | running  |  2/12/2019 1800  |  2/12/2019 2000

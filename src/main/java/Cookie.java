@@ -16,7 +16,7 @@ public class Cookie {
         System.out.println(line);
 
         while (true) {
-            String fullInput = scanner.nextLine();
+            String fullInput = scanner.nextLine().strip();
             String[] splitInput = fullInput.split(" ", 2);
             String firstWord = splitInput[0];
 
