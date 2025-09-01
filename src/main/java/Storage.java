@@ -27,7 +27,7 @@ public class Storage {
         }
     }
 
-    public ArrayList<Task> load() {
+    public ArrayList<Task> load() throws CookieException {
         ArrayList<Task> listOfTasks = new ArrayList<>();
 
         if (!Files.exists(filePath)) {

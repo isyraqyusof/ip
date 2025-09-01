@@ -1,2 +1,2 @@
-D | 1 | return book  |  Sunday
-E | 0 | project meeting  |  Mon 2pm  |  4pm
+D | 1 | return book | 2019-12-02 1800
+E | 0 | project meeting | 2019-12-15 2100 | 2019-12-15 2359

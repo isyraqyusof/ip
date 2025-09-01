@@ -13,12 +13,12 @@ Here are your tasks:
 ___________________________________
 ___________________________________
 A deadline, got it! I've added this task:
-[D][ ] return book (by: Sunday)
+[D][ ] return book (by: Dec 2 2019 1800)
 Now you have 2 tasks in the list.
 ___________________________________
 ___________________________________
 An event, got it! I've added this task:
-[E][ ] project meeting  (from:  Mon 2pm  to:  4pm)
+[E][ ] project meeting (from: Dec 15 2019 2100 to: Dec 15 2019 2359)
 Now you have 3 tasks in the list.
 ___________________________________
 ___________________________________
@@ -28,18 +28,18 @@ ___________________________________
 ___________________________________
 Here are your tasks:
 1. [T][X] borrow book
-2. [D][ ] return book (by: Sunday)
-3. [E][ ] project meeting  (from:  Mon 2pm  to:  4pm)
+2. [D][ ] return book (by: Dec 2 2019 1800)
+3. [E][ ] project meeting (from: Dec 15 2019 2100 to: Dec 15 2019 2359)
 ___________________________________
 ___________________________________
 Great! I've marked this task as done:
-[D][X] return book (by: Sunday)
+[D][X] return book (by: Dec 2 2019 1800)
 ___________________________________
 ___________________________________
 Here are your tasks:
 1. [T][X] borrow book
-2. [D][X] return book (by: Sunday)
-3. [E][ ] project meeting  (from:  Mon 2pm  to:  4pm)
+2. [D][X] return book (by: Dec 2 2019 1800)
+3. [E][ ] project meeting (from: Dec 15 2019 2100 to: Dec 15 2019 2359)
 ___________________________________
 ___________________________________
 Alright. I've marked this task as not done yet:
@@ -48,17 +48,11 @@ ___________________________________
 ___________________________________
 Here are your tasks:
 1. [T][ ] borrow book
-2. [D][X] return book (by: Sunday)
-3. [E][ ] project meeting  (from:  Mon 2pm  to:  4pm)
+2. [D][X] return book (by: Dec 2 2019 1800)
+3. [E][ ] project meeting (from: Dec 15 2019 2100 to: Dec 15 2019 2359)
 ___________________________________
 ___________________________________
 Oh no! Please provide a description for your todo task.
-___________________________________
-___________________________________
-Oh no! Please provide deadline in the format: {Description} /by {Day}
-___________________________________
-___________________________________
-Oh no! Please provide event in the format: {Description} /from {date/time} /to {date/time}
 ___________________________________
 ___________________________________
 Alright. I've deleted this task:
@@ -67,8 +61,8 @@ Now you have 2 tasks in the list.
 ___________________________________
 ___________________________________
 Here are your tasks:
-1. [D][X] return book (by: Sunday)
-2. [E][ ] project meeting  (from:  Mon 2pm  to:  4pm)
+1. [D][X] return book (by: Dec 2 2019 1800)
+2. [E][ ] project meeting (from: Dec 15 2019 2100 to: Dec 15 2019 2359)
 ___________________________________
 ___________________________________
 Bye. Hope to see you again soon!
