@@ -1,3 +1,7 @@
+package cookie.task;
+
+import cookie.exception.CookieException;
+
 public abstract class Task {
     protected String description;
     protected boolean isDone;

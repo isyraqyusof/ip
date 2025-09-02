@@ -1,3 +1,11 @@
+package cookie;
+
+import cookie.exception.CookieException;
+import cookie.parser.Parser;
+import cookie.storage.Storage;
+import cookie.task.TaskList;
+import cookie.ui.Ui;
+
 public class Cookie {
 
     private Storage storage;
