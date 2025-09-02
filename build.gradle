@@ -32,7 +32,8 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveFileName = 'cookie.jar'
+    archiveBaseName = "cookie"
     archiveClassifier = null
 }
 
