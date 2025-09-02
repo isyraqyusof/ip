@@ -1,24 +1,23 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 public class Cookie {
 
     private Storage storage;
+    private TaskList listOfTasks;
     private Ui ui;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Task> listOfTasks;
+        TaskList listOfTasks;
         int taskCounter = 0;
         Storage storage = new Storage("data/cookie.txt");
-
         Ui ui = new Ui();
 
         try {
-            listOfTasks = storage.load();
+            listOfTasks = new TaskList(storage.load());
             taskCounter = listOfTasks.size();
         } catch (CookieException e) {
             ui.showLoadingError(e.getMessage());
-            listOfTasks = new ArrayList<>();
+            listOfTasks = new TaskList();
         }
 
         ui.showWelcome();

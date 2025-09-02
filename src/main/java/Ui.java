@@ -24,7 +24,7 @@ public class Ui {
         System.out.println(line);
     }
 
-    public void showList(ArrayList<Task> listOfTasks) {
+    public void showList(TaskList listOfTasks) {
         System.out.println(line);
         System.out.println("Here are your tasks:");
         for (int i = 0; i < listOfTasks.size(); i++) {

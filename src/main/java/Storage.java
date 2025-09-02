@@ -13,10 +13,11 @@ public class Storage {
         this.filePath = Paths.get(filePath);
     }
 
-    public void save(ArrayList<Task> listOfTasks) {
+    public void save(TaskList listOfTasks) {
         ArrayList<String> listOfTasksInStoredFormat = new ArrayList<>();
 
-        for (Task task : listOfTasks) {
+        for (int i = 0; i < listOfTasks.size(); i++) {
+            Task task = listOfTasks.get(i);
             listOfTasksInStoredFormat.add(task.toStoredFormat());
         }
 
