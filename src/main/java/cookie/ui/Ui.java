@@ -1,4 +1,8 @@
-import java.util.ArrayList;
+package cookie.ui;
+
+import cookie.task.Task;
+import cookie.task.TaskList;
+
 import java.util.Scanner;
 
 public class Ui {

@@ -1,3 +1,14 @@
+package cookie.parser;
+
+import cookie.exception.CookieException;
+import cookie.ui.Ui;
+import cookie.storage.Storage;
+import cookie.task.Deadline;
+import cookie.task.Event;
+import cookie.task.Task;
+import cookie.task.TaskList;
+import cookie.task.Todo;
+
 public class Parser {
 
     public static boolean parse(TaskList listOfTasks, Ui ui, Storage storage, String fullInput) throws CookieException {
