@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Ui {
+    Scanner scanner = new Scanner(System.in);
     private final String line = "___________________________________";
 
     public Ui() {
@@ -30,21 +32,18 @@ public class Ui {
         for (int i = 0; i < listOfTasks.size(); i++) {
             System.out.println((i + 1) + ". " + listOfTasks.get(i));
         }
-        System.out.println(line);
     }
 
     public void showMark(Task taskToBeMarked) {
         System.out.println(line);
         System.out.println("Great! I've marked this task as done:");
         System.out.println(taskToBeMarked);
-        System.out.println(line);
     }
 
     public void showUnmark(Task taskToBeUnmarked) {
         System.out.println(line);
         System.out.println("Alright. I've marked this task as not done yet:");
         System.out.println(taskToBeUnmarked);
-        System.out.println(line);
     }
 
     public void showDelete(Task taskToBeDeleted, int taskCounter) {
@@ -52,7 +51,6 @@ public class Ui {
         System.out.println("Alright. I've deleted this task:");
         System.out.println(taskToBeDeleted);
         System.out.println("Now you have " + taskCounter + " tasks in the list.");
-        System.out.println(line);
     }
 
     public void showTodo(Task newTodo, int taskCounter) {
@@ -60,7 +58,6 @@ public class Ui {
         System.out.println("A todo, got it! I've added this task:");
         System.out.println(newTodo);
         System.out.println("Now you have " + taskCounter + " tasks in the list.");
-        System.out.println(line);
     }
 
     public void showDeadline(Task newDeadline, int taskCounter) {
@@ -68,7 +65,6 @@ public class Ui {
         System.out.println("A deadline, got it! I've added this task:");
         System.out.println(newDeadline);
         System.out.println("Now you have " + taskCounter + " tasks in the list.");
-        System.out.println(line);
     }
 
     public void showEvent(Task newEvent, int taskCounter) {
@@ -76,17 +72,20 @@ public class Ui {
         System.out.println("An event, got it! I've added this task:");
         System.out.println(newEvent);
         System.out.println("Now you have " + taskCounter + " tasks in the list.");
-        System.out.println(line);
     }
 
     public void showError(String message) {
         System.out.println(line);
         System.out.println("Oh no! " + message);
-        System.out.println(line);
     }
 
-    public void showLoadingError(String message) {
-        System.out.println("Error in loading tasks." + message);
+    public void showLoadingError() {
+        System.out.println(line);
+        System.out.println("Error in loading tasks.");
+    }
+
+    public String readNextLine() {
+        return scanner.nextLine().strip();
     }
 
 }
