@@ -151,4 +151,17 @@ public class Ui {
     public String readNextLine() {
         return scanner.nextLine().strip();
     }
+
+    public void showFindings(TaskList listOfMatchingTasks) {
+        System.out.println(line);
+        int numberOfMatchingTasks = listOfMatchingTasks.size();
+        if (numberOfMatchingTasks == 0) {
+            System.out.println("No matching tasks!");
+        } else {
+            System.out.println("Here are the tasks that match!");
+            for (int i = 0; i < listOfMatchingTasks.size(); i++) {
+                System.out.println((i + 1) + ". " + listOfMatchingTasks.get(i));
+            }
+        }
+    }
 }

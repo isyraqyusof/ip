@@ -94,6 +94,10 @@ public abstract class Task {
         }
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     /**
      * Returns task in Sting format with its completion status and description.
      *

@@ -63,4 +63,15 @@ public class TaskList {
     public void remove(int indexOfTaskToBeRemoved) {
         listOfTasks.remove(indexOfTaskToBeRemoved);
     }
+
+    public TaskList find(String taskToFind) {
+        TaskList listOfMatchingTasks = new TaskList();
+        for (Task currentTask : listOfTasks) {
+            String currentTaskDescription = currentTask.getDescription();
+            if (currentTaskDescription.equals(taskToFind)) {
+                listOfMatchingTasks.add(currentTask);
+            }
+        }
+        return listOfMatchingTasks;
+    }
 }
