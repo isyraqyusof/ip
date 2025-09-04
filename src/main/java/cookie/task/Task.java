@@ -32,32 +32,32 @@ public abstract class Task {
         String description = splitStoredFormat[2].strip();
 
         switch (typeOfTask) {
-            case "T":
-                Task todo = new Todo(description);
-                if (isDone) {
-                    todo.markAsDone();
-                }
-                return todo;
+        case "T":
+            Task todo = new Todo(description);
+            if (isDone) {
+                todo.markAsDone();
+            }
+            return todo;
 
-            case "D":
-                String by = splitStoredFormat[3].strip();
-                Task deadline = new Deadline(description, by);
-                if (isDone) {
-                    deadline.markAsDone();
-                }
-                return deadline;
+        case "D":
+            String by = splitStoredFormat[3].strip();
+            Task deadline = new Deadline(description, by);
+            if (isDone) {
+                deadline.markAsDone();
+            }
+            return deadline;
 
-            case "E":
-                String from = splitStoredFormat[3].strip();
-                String to = splitStoredFormat[4].strip();
-                Task event = new Event(description, from, to);
-                if (isDone) {
-                    event.markAsDone();
-                }
-                return event;
+        case "E":
+            String from = splitStoredFormat[3].strip();
+            String to = splitStoredFormat[4].strip();
+            Task event = new Event(description, from, to);
+            if (isDone) {
+                event.markAsDone();
+            }
+            return event;
 
-            default:
-                throw new IllegalArgumentException("Task not in proper format");
+        default:
+            throw new IllegalArgumentException("Task not in proper format");
         }
     }
 
