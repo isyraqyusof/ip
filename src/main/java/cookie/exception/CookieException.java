@@ -5,7 +5,7 @@ package cookie.exception;
  * Thrown when errors specific to this program occur like
  * invalid user input.
  */
-public class CookieException extends Exception{
+public class CookieException extends Exception {
 
     /**
      * Constructs a new CookieException with the specified error message

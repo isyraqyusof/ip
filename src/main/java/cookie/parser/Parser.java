@@ -27,7 +27,7 @@ public class Parser {
      * @return True if input is equal to "bye", false otherwise.
      * @throws CookieException If input does not follow required format.
      */
-    public static boolean parse(TaskList listOfTasks, Ui ui, Storage storage, String fullInput) throws CookieException {
+    public static boolean isParsing(TaskList listOfTasks, Ui ui, Storage storage, String fullInput) throws CookieException {
 
         String[] splitInput = fullInput.split(" ", 2);
         String firstWord = splitInput[0];

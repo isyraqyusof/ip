@@ -44,7 +44,7 @@ public class Cookie {
         while (isRunning) {
             try {
                 ui.showLine();
-                isRunning = Parser.parse(listOfTasks, ui, storage, ui.readNextLine());
+                isRunning = Parser.isParsing(listOfTasks, ui, storage, ui.readNextLine());
             } catch (CookieException e) {
                 ui.showError(e.getMessage());
             } finally {

@@ -151,5 +151,4 @@ public class Ui {
     public String readNextLine() {
         return scanner.nextLine().strip();
     }
-
 }
