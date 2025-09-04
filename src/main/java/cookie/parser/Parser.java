@@ -9,8 +9,24 @@ import cookie.task.Task;
 import cookie.task.TaskList;
 import cookie.task.Todo;
 
+/**
+ * Checks the users input matches the required format and
+ * executes the relevant functions.
+ */
 public class Parser {
 
+    /**
+     * Checks the users input matches the required format and
+     * prints the corresponding output, updates the task list,
+     * and saves it.
+     *
+     * @param listOfTasks List of tasks currently stored.
+     * @param ui The ui instance used to print relevant messages to user.
+     * @param storage The storage instance used to save the current list in a text file
+     * @param fullInput The complete user input string.
+     * @return True if input is equal to "bye", false otherwise.
+     * @throws CookieException If input does not follow required format.
+     */
     public static boolean parse(TaskList listOfTasks, Ui ui, Storage storage, String fullInput) throws CookieException {
 
         String[] splitInput = fullInput.split(" ", 2);
