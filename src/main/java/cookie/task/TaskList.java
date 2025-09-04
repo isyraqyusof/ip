@@ -68,7 +68,7 @@ public class TaskList {
         TaskList listOfMatchingTasks = new TaskList();
         for (Task currentTask : listOfTasks) {
             String currentTaskDescription = currentTask.getDescription();
-            if (currentTaskDescription.equals(taskToFind)) {
+            if (currentTaskDescription.contains(taskToFind.strip())) {
                 listOfMatchingTasks.add(currentTask);
             }
         }
