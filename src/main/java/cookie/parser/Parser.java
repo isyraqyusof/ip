@@ -78,6 +78,14 @@ public class Parser {
                 listOfTasks.add(newEvent);
                 ui.showEvent(newEvent, listOfTasks.size());
                 storage.save(listOfTasks);
+            } else if (firstWord.equals("find")) {
+                if (fullInput.equals("find")) {
+                    throw new CookieException("Please specify task to find.");
+                }
+                String taskToFind = splitInput[1];
+                TaskList listOfMatchingTasks = listOfTasks.find(taskToFind);
+                ui.showFindings(listOfMatchingTasks);
+
             } else {
                 throw new CookieException("Sorry! I'm not too sure what you mean!");
             }

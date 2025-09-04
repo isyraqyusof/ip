@@ -61,6 +61,10 @@ public abstract class Task {
         }
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     @Override
     public String toString() {
         return ("[" + getStatusIcon() + "] " + this.description);
