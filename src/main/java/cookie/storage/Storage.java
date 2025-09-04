@@ -11,14 +11,29 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Manages the saving and loading of tasks to and from the text file respectively.
+ */
 public class Storage {
 
+    /** File path to text file where the list data is stored */
     private final Path filePath;
 
+    /**
+     * Creates new instance of Storage with specified file path.
+     *
+     * @param filePath Path to specified text file where data is to be stored.
+     */
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
     }
 
+    /**
+     * Converts each task in the list to the save format.
+     * Writes this new list of tasks in saved format to text file.
+     *
+     * @param listOfTasks List of tasks to save to specified text file.
+     */
     public void save(TaskList listOfTasks) {
         ArrayList<String> listOfTasksInStoredFormat = new ArrayList<>();
 
@@ -34,6 +49,15 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads list of tasks from saved file.
+     * Converts each task in the loaded list to the original format.
+     * Creates new directory and file if file is not present.
+     *
+     * @return List of tasks loaded from specified text file.
+     * @throws CookieException If there is an error converting task from stored
+     * format to original format
+     */
     public ArrayList<Task> load() throws CookieException {
         ArrayList<Task> listOfTasks = new ArrayList<>();
 
