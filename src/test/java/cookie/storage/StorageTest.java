@@ -1,15 +1,16 @@
 package cookie.storage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import cookie.task.TaskList;
-import cookie.task.Todo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import cookie.task.TaskList;
+import cookie.task.Todo;
 
 public class StorageTest {
     @TempDir
@@ -29,5 +30,4 @@ public class StorageTest {
         assertEquals("T | 0 | sleep", Files.readString(testFile).strip());
 
     }
-
 }

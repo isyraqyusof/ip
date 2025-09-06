@@ -1,15 +1,16 @@
 package cookie.ui;
 
+import java.util.Scanner;
+
 import cookie.task.Task;
 import cookie.task.TaskList;
 
-import java.util.Scanner;
 
 /**
  * Handles input and output operations and displaying of relevant messages.
  */
 public class Ui {
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
     private final String line = "___________________________________";
 
     public Ui() {
@@ -152,6 +153,11 @@ public class Ui {
         return scanner.nextLine().strip();
     }
 
+    /**
+     * Displays the list of matching tasks.
+     *
+     * @param listOfMatchingTasks List of matching tasks.
+     */
     public void showFindings(TaskList listOfMatchingTasks) {
         System.out.println(line);
         int numberOfMatchingTasks = listOfMatchingTasks.size();

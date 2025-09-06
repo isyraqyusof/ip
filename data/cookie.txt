@@ -1,6 +1,4 @@
-T | 1 | break
 D | 0 | sleep | 2019-10-15 2200
-T | 0 | help
 T | 0 | break
 E | 0 | running | 2019-10-15 1800 | 2019-10-15 2000
 T | 0 | sleep

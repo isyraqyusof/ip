@@ -15,7 +15,7 @@ public class TaskList {
      * Creates new empty TaskList.
      */
     public TaskList() {
-        this.listOfTasks =  new ArrayList<>();
+        this.listOfTasks = new ArrayList<>();
     }
 
     /**
@@ -64,6 +64,12 @@ public class TaskList {
         listOfTasks.remove(indexOfTaskToBeRemoved);
     }
 
+    /**
+     * Returns list of tasks with all tasks that match the specified task to find.
+     *
+     * @param taskToFind Specified task to find.
+     * @return List of tasks that match the specified task to find.
+     */
     public TaskList find(String taskToFind) {
         TaskList listOfMatchingTasks = new TaskList();
         for (Task currentTask : listOfTasks) {
