@@ -1,13 +1,13 @@
 package cookie.parser;
 
 import cookie.exception.CookieException;
-import cookie.ui.Ui;
 import cookie.storage.Storage;
 import cookie.task.Deadline;
 import cookie.task.Event;
 import cookie.task.Task;
 import cookie.task.TaskList;
 import cookie.task.Todo;
+import cookie.ui.Ui;
 
 /**
  * Checks the users input matches the required format and
@@ -27,7 +27,8 @@ public class Parser {
      * @return True if input is equal to "bye", false otherwise.
      * @throws CookieException If input does not follow required format.
      */
-    public static boolean isParsing(TaskList listOfTasks, Ui ui, Storage storage, String fullInput) throws CookieException {
+    public static boolean isParsing(
+            TaskList listOfTasks, Ui ui, Storage storage, String fullInput) throws CookieException {
 
         String[] splitInput = fullInput.split(" ", 2);
         String firstWord = splitInput[0];
@@ -83,7 +84,8 @@ public class Parser {
                 storage.save(listOfTasks);
             } else if (firstWord.equals("event")) {
                 if (fullInput.equals("event") || !splitInput[1].contains("/from") || !splitInput[1].contains("/to")) {
-                    throw new CookieException("Please provide event in the format: {Description} /from {date/time} /to {date/time}");
+                    throw new CookieException(
+                            "Please provide event in the format: {Description} /from {date/time} /to {date/time}");
                 }
                 String[] secondPhraseSplit = splitInput[1].split("/from");
                 String[] thirdPhraseSplit = secondPhraseSplit[1].split("/to");

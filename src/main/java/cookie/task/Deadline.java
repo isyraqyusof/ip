@@ -1,10 +1,10 @@
 package cookie.task;
 
-import cookie.exception.CookieException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import cookie.exception.CookieException;
 
 /**
  * Represents a task with a specific deadline.
@@ -12,9 +12,10 @@ import java.time.format.DateTimeParseException;
  */
 public class Deadline extends Task {
 
-    protected LocalDateTime by;
     private static final DateTimeFormatter FORMAT_FOR_INPUT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter FORMAT_FOR_OUTPUT = DateTimeFormatter.ofPattern("MMM d yyyy HHmm");
+
+    protected LocalDateTime by;
 
     /**
      * Creates new deadline task with the given description and due date.

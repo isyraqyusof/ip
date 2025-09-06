@@ -1,10 +1,11 @@
 package cookie.task;
 
-import cookie.exception.CookieException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import cookie.exception.CookieException;
+
 
 /**
  * Represents a task with a specific start and end date and time.
@@ -12,10 +13,11 @@ import java.time.format.DateTimeParseException;
  */
 public class Event extends Task {
 
-    protected LocalDateTime from;
-    protected LocalDateTime to;
     private static final DateTimeFormatter FORMAT_FOR_INPUT = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
     private static final DateTimeFormatter FORMAT_FOR_OUTPUT = DateTimeFormatter.ofPattern("MMM d yyyy HHmm");
+
+    protected LocalDateTime from;
+    protected LocalDateTime to;
 
     /**
      * Creates new event task with the given description, start and end date and time.

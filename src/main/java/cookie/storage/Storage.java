@@ -1,15 +1,15 @@
 package cookie.storage;
 
-import cookie.exception.CookieException;
-import cookie.task.Task;
-import cookie.task.TaskList;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import cookie.exception.CookieException;
+import cookie.task.Task;
+import cookie.task.TaskList;
 
 /**
  * Manages the saving and loading of tasks to and from the text file respectively.
@@ -55,8 +55,7 @@ public class Storage {
      * Creates new directory and file if file is not present.
      *
      * @return List of tasks loaded from specified text file.
-     * @throws CookieException If there is an error converting task from stored
-     * format to original format
+     * @throws CookieException If there is an error converting task from stored format to original format.
      */
     public ArrayList<Task> load() throws CookieException {
         ArrayList<Task> listOfTasks = new ArrayList<>();
