@@ -7,7 +7,7 @@ import cookie.task.TaskList;
 import cookie.ui.Ui;
 
 /**
- * Main class for the Cookie task management chatbot.
+ * cookie.ui.Main class for the Cookie task management chatbot.
  * Handles interaction between the UI, Storage, Parser and Tasks.
  */
 public class Cookie {
@@ -59,5 +59,13 @@ public class Cookie {
      */
     public static void main(String[] args) {
         new Cookie("data/cookie.txt").run();
+    }
+
+    public String getResponse(String input) {
+        try {
+            return Parser.parseForGui(listOfTasks, ui, storage, input);
+        } catch (CookieException e) {
+            return ui.showErrorGui(e.getMessage());
+        }
     }
 }
