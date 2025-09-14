@@ -7,7 +7,7 @@ import cookie.task.TaskList;
 import cookie.ui.Ui;
 
 /**
- * cookie.ui.Main class for the Cookie task management chatbot.
+ * Main class for the Cookie task management chatbot.
  * Handles interaction between the UI, Storage, Parser and Tasks.
  */
 public class Cookie {
@@ -28,39 +28,17 @@ public class Cookie {
         try {
             listOfTasks = new TaskList(storage.load());
         } catch (CookieException e) {
-            ui.showLoadingError();
+            ui.showLoadingErrorGui();
             listOfTasks = new TaskList();
         }
     }
 
     /**
-     * Displays welcome message.
-     * Runs the main loop to run the Cookie chatbot.
-     * Process user commands and handles program termination.
+     * Processes user input and returns the relevant output for the GUI.
+     *
+     * @param input User input string.
+     * @return Response to be displayed in GUI.
      */
-    public void run() {
-        ui.showWelcome();
-        boolean isRunning = true;
-        while (isRunning) {
-            try {
-                ui.showLine();
-                isRunning = Parser.isParsing(listOfTasks, ui, storage, ui.readNextLine());
-            } catch (CookieException e) {
-                ui.showError(e.getMessage());
-            } finally {
-                ui.showLine();
-            }
-        }
-    }
-
-    /**
-     * Calls the function to start the main program loop.
-     * @param args
-     */
-    public static void main(String[] args) {
-        new Cookie("data/cookie.txt").run();
-    }
-
     public String getResponse(String input) {
         try {
             return Parser.parseForGui(listOfTasks, ui, storage, input);

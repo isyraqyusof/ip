@@ -25,7 +25,7 @@ public class Main extends Application {
             stage.setScene(scene);
             stage.setMinHeight(220);
             stage.setMinWidth(417);
-            fxmlLoader.<MainWindow>getController().setCookie(cookie);  // inject the Cookie instance
+            fxmlLoader.<MainWindow>getController().setCookie(cookie); // inject the Cookie instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
