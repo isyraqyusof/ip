@@ -166,6 +166,7 @@ public class Parser {
                 if (fullInput.equals("todo")) {
                     throw new CookieException("Please provide a description for your todo task.");
                 }
+                assert splitInput.length == 2 : "Todo task should have a type and description";
                 Task newTodo = new Todo(splitInput[1]);
                 listOfTasks.add(newTodo);
                 storage.save(listOfTasks);
@@ -175,6 +176,7 @@ public class Parser {
                     throw new CookieException("Please provide deadline in the format: {Description} /by {Day}");
                 }
                 String[] secondPhraseSplit = splitInput[1].split("/by");
+                assert secondPhraseSplit.length == 2 : "Deadline task should have a description and end date/time";
                 String description = secondPhraseSplit[0];
                 String deadline = secondPhraseSplit[1];
                 Task newDeadline = new Deadline(description, deadline);
@@ -189,6 +191,7 @@ public class Parser {
                 String[] secondPhraseSplit = splitInput[1].split("/from");
                 String[] thirdPhraseSplit = secondPhraseSplit[1].split("/to");
                 String description = secondPhraseSplit[0];
+                assert thirdPhraseSplit.length == 2 : "Event task should have a start and end date/time";
                 String from = thirdPhraseSplit[0];
                 String to = thirdPhraseSplit[1];
                 Task newEvent = new Event(description, from, to);
