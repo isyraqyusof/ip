@@ -7,4 +7,4 @@ E | 0 | project meeting | 2019-12-15 2100 | 2019-12-15 2359
 E | 1 | project meeting | 2019-12-15 2100 | 2019-12-15 2359
 D | 0 | return book | 2019-12-02 1800
 D | 0 | return book | 2019-12-02 1800
-T | 0 | book
+T | 0 | sleep
