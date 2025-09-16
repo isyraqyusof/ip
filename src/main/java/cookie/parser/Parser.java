@@ -25,7 +25,7 @@ public class Parser {
      * @param ui          The ui instance used to print relevant messages to user.
      * @param storage     The storage instance used to save the current list in a text file
      * @param fullInput   The complete user input string.
-     * @return True if input is equal to "bye", false otherwise.
+     * @return String output to indicate whether operation was a success or not.
      * @throws CookieException If input does not follow required format.
      */
     public static String parseForGui(
@@ -53,6 +53,8 @@ public class Parser {
             return handleEvent(listOfTasks, ui, storage, fullInput, splitInput);
         case "find":
             return handleFind(listOfTasks, ui, storage, fullInput, splitInput);
+        case "update":
+            return handleUpdate(listOfTasks, ui, storage, fullInput, splitInput);
         default:
             throw new CookieException("Sorry! I'm not too sure what you mean");
         }
@@ -146,5 +148,31 @@ public class Parser {
         System.out.println(taskToFind);
         TaskList listOfMatchingTasks = listOfTasks.find(taskToFind);
         return ui.showFindingsGui(listOfMatchingTasks);
+    }
+
+    private static String handleUpdate(TaskList listOfTasks, Ui ui, Storage storage,
+                                       String fullInput, String[] splitInput) throws CookieException {
+        if (fullInput.equals("update")) {
+            throw new CookieException("Please specify task to update in the following format:" +
+                    "update {task number} {updated information}");
+        }
+
+        String[] providedInformation = splitInput[1].split(" ", 2);
+        if  (providedInformation.length < 2) {
+            throw new CookieException("Please specify task to update in the following format:" +
+                    "update {task number} {updated information}");
+        }
+
+        int indexToUpdate =  Integer.parseInt(providedInformation[0]) - 1;
+        String newInformation =  providedInformation[1];
+
+        if (indexToUpdate < 0 || indexToUpdate > listOfTasks.size()) {
+            throw new CookieException("Task Number " + (indexToUpdate + 1) + " out of bounds.");
+        }
+
+        Task taskToUpdate = listOfTasks.get(indexToUpdate);
+        taskToUpdate.update(newInformation);
+        storage.save(listOfTasks);
+        return ui.showUpdateGui(taskToUpdate, indexToUpdate + 1);
     }
 }

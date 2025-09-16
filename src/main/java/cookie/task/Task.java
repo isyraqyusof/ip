@@ -94,6 +94,21 @@ public abstract class Task {
         }
     }
 
+    /**
+     * Updates task information.
+     * Abstract method to ensure all subclasses of task implement
+     * this method in a way appropriate to their classes.
+     *
+     * @param newInformation Information to update task
+     * @throws CookieException if input not in proper format.
+     */
+    public abstract void update(String newInformation) throws  CookieException;
+
+    /**
+     * Returns task description.
+     *
+     * @return String form of task description.
+     */
     public String getDescription() {
         return this.description;
     }

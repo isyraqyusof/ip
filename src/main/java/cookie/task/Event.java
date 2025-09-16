@@ -51,6 +51,59 @@ public class Event extends Task {
     }
 
     /**
+     * Updates event task with updated information.
+     *
+     * @param newInformation  Updated information.
+     * @throws CookieException if input not in proper format.
+     */
+    @Override
+    public void update(String newInformation) throws CookieException {
+        String newDescription;
+        String newFrom = null;
+        String newTo = null;
+
+        if (newInformation.contains("/from")) {
+            String[] firstPhraseSplit = newInformation.split("/from", 2);
+            newDescription = firstPhraseSplit[0].strip();
+            String phraseWithDates = firstPhraseSplit[1];
+
+            if (newInformation.contains("/to")) {
+                String[] secondPhraseSplit = phraseWithDates.split("/to", 2);
+                newFrom = secondPhraseSplit[0].strip();
+                newTo = secondPhraseSplit[1].strip();
+            } else {
+                newFrom = phraseWithDates.strip();
+            }
+        } else if (newInformation.contains("/to")) {
+            String[] firstPhraseSplit = newInformation.split("/from", 2);
+            newDescription = firstPhraseSplit[0].strip();
+            newTo = firstPhraseSplit[1].strip();
+        } else {
+            newDescription = newInformation.strip();
+        }
+
+        if (!newDescription.isEmpty()) {
+            this.description = newDescription;
+        }
+
+        if (newFrom != null && !newFrom.isEmpty()) {
+            try {
+                this.from = LocalDateTime.parse(newFrom, FORMAT_FOR_INPUT);
+            } catch (DateTimeParseException e) {
+                throw new CookieException("Please specify date in the following format: yyyy-MM-dd HHmm");
+            }
+        }
+
+        if (newTo != null && !newTo.isEmpty()) {
+            try {
+                this.to = LocalDateTime.parse(newTo, FORMAT_FOR_INPUT);
+            } catch (DateTimeParseException e) {
+                throw new CookieException("Please specify date in the following format: yyyy-MM-dd HHmm");
+            }
+        }
+    }
+
+    /**
      * Returns event task in String format with its type, description,
      * from and to date and time.
      *
