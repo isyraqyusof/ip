@@ -1,5 +1,7 @@
 package cookie.task;
 
+import cookie.exception.CookieException;
+
 /**
  * Represents a task with a specific description.
  * Does not have a date or time like its base Task class.
@@ -24,6 +26,19 @@ public class Todo extends Task {
     public String toStoredFormat() {
         int status = isDone ? 1 : 0;
         return "T | " + status + " | " + description;
+    }
+
+    /**
+     * Updates todo task description with updated information.
+     *
+     * @param newInformation  Updated description.
+     */
+    @Override
+    public void update(String newInformation) throws CookieException {
+        if (newInformation == null || newInformation.isBlank()) {
+            throw new CookieException("Todo task cannot be empty.");
+        }
+        this.description = newInformation.strip();
     }
 
     /**

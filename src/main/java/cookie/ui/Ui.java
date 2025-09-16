@@ -133,4 +133,8 @@ public class Ui {
             return output;
         }
     }
+
+    public String showUpdateGui(Task updatedTask, int taskNumber) {
+        return "Great! I have updated Task " + taskNumber + ":\n" + updatedTask;
+    }
 }

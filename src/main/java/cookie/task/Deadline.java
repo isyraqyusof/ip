@@ -45,6 +45,39 @@ public class Deadline extends Task {
     }
 
     /**
+     * Updates deadline task with updated information.
+     *
+     * @param newInformation  Updated information.
+     * @throws CookieException if input not in proper format.
+     */
+    @Override
+    public void update(String newInformation) throws CookieException {
+        String newDescription, newBy;
+
+        if (newInformation.contains("/by")) {
+            String[] split = newInformation.split("/by");
+            newDescription = split[0].strip();
+            newBy = split[1].strip();
+
+            if (!newDescription.isEmpty()) {
+                this.description = newDescription;
+            }
+            if (!newBy.isEmpty()) {
+                try {
+                    this.by = LocalDateTime.parse(newBy, FORMAT_FOR_INPUT);
+                } catch (DateTimeParseException e) {
+                    throw new CookieException("Please specify date in the following format: yyyy-MM-dd HHmm");
+                }
+            }
+        } else {
+            if (newInformation.isBlank()) {
+                throw new CookieException("Update details cannot be empty.");
+            }
+            this.description = newInformation.strip();
+        }
+    }
+
+    /**
      * Returns deadline task in String format with its type, description,
      * and due date and time.
      *
