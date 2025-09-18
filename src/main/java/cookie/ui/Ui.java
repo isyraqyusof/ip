@@ -126,7 +126,7 @@ public class Ui {
         if (numberOfMatchingTasks == 0) {
             return "No matching tasks!";
         } else {
-            String output = "Here are the tasks that match!";
+            String output = "Here are the tasks that match!\n";
             for (int i = 0; i < listOfMatchingTasks.size(); i++) {
                 output += ((i + 1) + ". " + listOfMatchingTasks.get(i) + "\n");
             }
