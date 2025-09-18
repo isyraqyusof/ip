@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * A GUI for Cookie using FXML.
+ * Enhanced GUI for Cookie using FXML with improved styling and responsiveness
  */
 public class Main extends Application {
 
@@ -22,10 +22,20 @@ public class Main extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
+            // Ensure dialog bubble styles are loaded
+            scene.getStylesheets().add(Main.class.getResource("/css/dialog-box.css").toExternalForm());
+
+            // Enhanced window settings
             stage.setScene(scene);
-            stage.setMinHeight(220);
-            stage.setMinWidth(417);
-            fxmlLoader.<MainWindow>getController().setCookie(cookie); // inject the Cookie instance
+            stage.setTitle("Cookie - Task Manager");
+            stage.setMinHeight(400);
+            stage.setMinWidth(450);
+
+            // Set preferred size for better initial appearance
+            stage.setWidth(500);
+            stage.setHeight(700);
+
+            fxmlLoader.<MainWindow>getController().setCookie(cookie);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
