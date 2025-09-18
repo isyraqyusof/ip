@@ -5,6 +5,17 @@
 Cookie is a state-of-the-art task manager.  
 It's designed to make keeping track of your tasks a walk in the park.
 
+## Quick Start
+1. Ensure you have Java 17 installed.
+2. Download the latest `cookie.jar` file from this repository.
+3. Run the `java -jar cookie.jar` command in the folder containing `cookie.jar`.
+4. You'll see the following welcome message:
+```
+Hey there! My name is Cookie
+How can I help you?
+```
+5. Start inputting commands!
+
 ## Adding a todo: todo
 
 A todo is a task without a date / time attached.
