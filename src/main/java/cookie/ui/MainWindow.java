@@ -1,18 +1,17 @@
 package cookie.ui;
 
 import cookie.Cookie;
-import cookie.exception.CookieException;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.application.Platform;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 /**
@@ -33,6 +32,11 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/cat2.png"));
     private Image cookieImage = new Image(this.getClass().getResourceAsStream("/images/cat.png"));
 
+    /**
+     * Initializes GUI components and sets up User Interface.
+     * Method is called by JavaFX.
+     * Sets autoscroll, displays welcome message and adds enter key support.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());

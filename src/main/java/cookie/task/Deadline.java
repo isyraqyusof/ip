@@ -52,7 +52,8 @@ public class Deadline extends Task {
      */
     @Override
     public void update(String newInformation) throws CookieException {
-        String newDescription, newBy;
+        String newDescription;
+        String newBy;
 
         if (newInformation.contains("/by")) {
             String[] split = newInformation.split("/by");

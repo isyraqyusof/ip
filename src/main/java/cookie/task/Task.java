@@ -102,7 +102,7 @@ public abstract class Task {
      * @param newInformation Information to update task
      * @throws CookieException if input not in proper format.
      */
-    public abstract void update(String newInformation) throws  CookieException;
+    public abstract void update(String newInformation) throws CookieException;
 
     /**
      * Returns task description.

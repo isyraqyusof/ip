@@ -153,18 +153,18 @@ public class Parser {
     private static String handleUpdate(TaskList listOfTasks, Ui ui, Storage storage,
                                        String fullInput, String[] splitInput) throws CookieException {
         if (fullInput.equals("update")) {
-            throw new CookieException("Please specify task to update in the following format:" +
-                    "update {task number} {updated information}");
+            throw new CookieException("Please specify task to update in the following format: "
+                    + "update {task number} {updated information}");
         }
 
         String[] providedInformation = splitInput[1].split(" ", 2);
-        if  (providedInformation.length < 2) {
-            throw new CookieException("Please specify task to update in the following format:" +
-                    "update {task number} {updated information}");
+        if (providedInformation.length < 2) {
+            throw new CookieException("Please specify task to update in the following format: "
+                    + "update {task number} {updated information}");
         }
 
-        int indexToUpdate =  Integer.parseInt(providedInformation[0]) - 1;
-        String newInformation =  providedInformation[1];
+        int indexToUpdate = Integer.parseInt(providedInformation[0]) - 1;
+        String newInformation = providedInformation[1];
 
         if (indexToUpdate < 0 || indexToUpdate > listOfTasks.size()) {
             throw new CookieException("Task Number " + (indexToUpdate + 1) + " out of bounds.");
