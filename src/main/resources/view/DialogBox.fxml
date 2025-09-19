@@ -7,7 +7,7 @@
 
 <fx:root alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
          prefWidth="400.0" spacing="10.0" type="javafx.scene.layout.HBox"
-         xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+         xmlns="http://javafx.com/javafx/22.0.4" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label fx:id="dialog" minHeight="-Infinity" text="Label" wrapText="true"
                maxWidth="280.0" />

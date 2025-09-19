@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="450.0"
             prefHeight="700.0" prefWidth="500.0" stylesheets="@../css/main.css"
-            xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/22.0.4" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="cookie.ui.MainWindow">
     <children>
         <!-- Chat area with optimized scrolling -->
